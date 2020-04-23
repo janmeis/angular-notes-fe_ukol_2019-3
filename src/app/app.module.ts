@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TranslocoRootModule } from './transloco-root.module';
 
 
 @NgModule({
@@ -15,14 +17,16 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    TranslocoRootModule
   ],
   providers: [],
   bootstrap: [AppComponent]

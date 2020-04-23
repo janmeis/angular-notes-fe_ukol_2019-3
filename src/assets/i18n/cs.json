@@ -1,0 +1,6 @@
+{
+  "app": {
+    "app_is_running": "Aplikace '{{value}}' funguje",
+    "welcome": "Nazdar"
+  }
+}

@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --extra-webpack-config webpack-dev.config.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n:extract": "transloco-keys-manager extract -u -r --sort",
+    "i18n:find": "transloco-keys-manager find"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~9.1.1",
     "@angular/router": "~9.1.1",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ngneat/transloco": "^2.16.1",
     "bootstrap": "^4.4.1",
     "firebase": "^7.14.1",
     "font-awesome": "^4.7.0",
@@ -50,6 +53,8 @@
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "ngx-build-plus": "^9.0.2",
+    "@ngneat/transloco-keys-manager": "^1.0.0"
   }
 }

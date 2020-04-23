@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Notes
+
+ [Angular 9/8 Authentication with Firebase (Google, Email & Password): Login, Register, Email Verification and Password Recovery](https://www.techiediaries.com/angular-firebase/angular-9-firebase-authentication-email-google-and-password/)  
+ [Introducing Transloco: Angular Internationalization Done Righ](https://netbasal.com/introducing-transloco-angular-internationalization-done-right-54710337630c)  
+ [transloco](https://netbasal.gitbook.io/transloco/)  
+ [ngneat](https://github.com/ngneat/transloco-keys-manager)  

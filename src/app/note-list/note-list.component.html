@@ -1,0 +1,42 @@
+<table class="table">
+    <colgroup>
+      <col style="width:5%">
+      <col style="width:20%">
+      <col style="width:50%">
+      <col style="width:10%">
+      <col style="width:10%">
+      <col style="width:5%">
+    </colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      <th scope="col">Title</th>
+      <th scope="col">Text</th>
+      <th scope="col">Priority</th>
+      <th scope="col">Rating</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let note of notes$ | async">
+      <td></td>
+      <td scope="row"><a [routerLink]="'/detail/' + note.refId">{{note.title}}</a></td>
+      <td>{{note.text | slice:0:65}}</td>
+      <td>{{note.priority}}</td>
+      <td>{{note.rating}}</td>
+      <td>
+        <a [ngbPopover]="popContent" [autoClose]="false" triggers="manual" #pop="ngbPopover" (click)="pop.open()" placement="left">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+
+        <ng-template #popContent>
+          Are you sure you want to delete '{{note.title}}'?
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" (click)="pop.close()">Cancel</button>
+            <button type="button" class="btn btn-danger" (click)="popClose(pop, note.refId)">Ok</button>
+          </div>
+        </ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
+import { NoteListComponent } from './note-list/note-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NoteDetailComponent
+    NoteDetailComponent,
+    NoteListComponent
   ],
   imports: [
     AngularFireAuthModule,

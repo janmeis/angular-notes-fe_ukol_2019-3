@@ -1,10 +1,12 @@
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
 })
 export class AppComponent {
   title = 'angular-notes';
@@ -14,6 +16,7 @@ export class AppComponent {
   }
 
   constructor(
+    public location: Location,
     private translocoService: TranslocoService
   ) { }
 

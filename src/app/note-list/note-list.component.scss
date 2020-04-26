@@ -1,0 +1,26 @@
+table {
+  td > a {
+    cursor: pointer;
+    i {
+      color: red;
+    }
+  }
+
+  tr > {
+    td:nth-last-child(3),
+    td:nth-last-child(2),
+    td:last-child {
+      text-align: center;
+    }
+  }
+}
+
+::ng-deep .popover-body .modal-footer {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0 0 0;
+  button {
+    font-size: 13px;
+    padding: 4px 8px;
+    margin: 2px;
+  }
+}

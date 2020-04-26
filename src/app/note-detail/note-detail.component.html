@@ -1,47 +1,57 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <div class="card bg-light">
-      <div class="card-body">
-        <h5 class="card-title">Item detail</h5>
+<div class="card bg-light">
+  <div class="card-body">
+    <h5 class="card-title">Item detail</h5>
 
-        <form [formGroup]="validateForm" (ngSubmit)="onSubmit()">
-          <div class="form-group required row">
-            <label for="title" class="col-md-2 col-form-label">Title</label>
-            <div class="col-md-10">
-              <input class="form-control"
-                     formControlName="title"
-                     type="text"
-                     required
-                     [ngClass]="{'is-invalid': f.title.dirty && f.title.errors?.required, 'is-valid': f.title.dirty && f.title.valid }">
-              <div *ngIf="f.title.dirty && f.title.errors?.required" class="invalid-tooltip">
-                Please choose a unique and valid title.
-              </div>
-            </div>
+    <form [formGroup]="validateForm" (ngSubmit)="onSubmit()">
+      <div class="form-group required row">
+        <label for="title" class="col-md-2 col-form-label">Title</label>
+        <div class="col-md-10">
+          <input class="form-control"
+                  formControlName="title"
+                  type="text"
+                  [ngClass]="{'is-invalid': f.title.dirty && f.title.errors?.required, 'is-valid': f.title.dirty && f.title.valid }">
+          <div *ngIf="f.title.dirty && f.title.errors?.required" class="invalid-tooltip">
+            Please choose a unique and valid title.
           </div>
-
-          <div class="form-group required row">
-            <label for="text"
-                   class="col-md-2 col-form-label">Text</label>
-            <div class="col-md-10">
-              <textarea  class="form-control"
-                     formControlName="text"
-                     required
-                     rows="5"
-                     [ngClass]="{'is-invalid': f.text.dirty && f.text.errors?.required, 'is-valid': f.text.dirty && f.text.valid }"></textarea>
-              <div *ngIf="f.text.dirty && f.text.errors?.required"
-                   class="invalid-tooltip">
-                Please choose a unique and valid text.
-              </div>
-            </div>
-          </div>
-
-          <div class="btn-group float-right" role="group">
-            <button type="button" class="btn btn-secondary mr-2" routerLink="/">Cancel</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-
+        </div>
       </div>
-    </div>
+
+      <div class="form-group row">
+        <label for="text"
+                class="col-md-2 col-form-label">Text</label>
+        <div class="col-md-10">
+          <textarea  class="form-control"
+                  formControlName="text"
+                  rows="5"
+                  [ngClass]="{'is-valid': f.text.dirty && f.text.valid }"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="priority"
+                class="col-md-2 col-form-label">Priority</label>
+        <div class="col-md-3">
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" (click)="buttonClicked('up')">
+            </button>
+            <button type="button" class="btn btn-outline-secondary">
+              <i class="fa fa-2x" [ngClass]="'priority-' + Priority[f.priority.value]"></i>
+            </button>
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" (click)="buttonClicked('down')">
+            </button>
+          </div>
+        </div>
+        <label for="text" class="col-md-2 col-form-label">Rating</label>
+        <div class="col-md-2">
+          <ngb-rating formControlName="rating" [max]="5"></ngb-rating>
+        </div>
+      </div>
+
+      <div class="btn-group float-right" role="group">
+        <button type="button" class="btn btn-secondary mr-2" routerLink="/">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+
   </div>
 </div>

@@ -38,6 +38,7 @@ export class AppComponent {
   signIn() {
     this.modalService.open(LoginDialogComponent)
   }
+
   signOut() {
     this.authenticationService.signOut$()
       .subscribe();

@@ -1,6 +1,10 @@
 <div class="card bg-light">
   <div class="card-body">
-    <h5 class="card-title">Note detail</h5>
+    <h5 class="card-title">Note detail
+      <button type="button" class="close" routerLink="/">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </h5>
 
     <form [formGroup]="validateForm" (ngSubmit)="onSubmit()">
       <div class="form-group required row">
@@ -44,8 +48,7 @@
       </div>
 
       <div class="btn-group float-right" role="group">
-        <button type="button" class="btn btn-secondary mr-2" routerLink="/">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button *ngIf="user$ | async" type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
 

@@ -18,10 +18,7 @@
   <tbody>
     <tr *ngFor="let note of notes$ | async">
       <td scope="row">
-        <a *ngIf="user$ | async;else noUser"  [routerLink]="'/detail/' + note.refId">{{note.title}}</a>
-        <ng-template #noUser>
-          {{note.title}}
-        </ng-template>
+        <a [routerLink]="'/detail/' + note.refId">{{note.title}}</a>
       </td>
       <td>
         <span [ngbPopover]="note.text" [triggers]="note.text.length > 80 ? 'hover' : ''" container="body">

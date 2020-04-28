@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { NoteService } from 'src/app/services/note.service';
 import { markControlsDirty } from '../components/common-functions';
 import { INote, Priority } from './note';
+import { AuthenticationService } from '../services/authentication.service';
+import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -16,6 +18,7 @@ export class NoteDetailComponent implements OnInit {
   validateForm: FormGroup;
   id: string;
   priorityKeys: number[];
+  user$: Observable<firebase.User>;
   Priority = Priority;
 
   /// <see cref="https://stackblitz.com/edit/angular-reactive-forms-validation"/>
@@ -23,11 +26,16 @@ export class NoteDetailComponent implements OnInit {
   get f() { return this.validateForm.controls; }
 
   constructor(
+    private authenticationService: AuthenticationService,
     private fb: FormBuilder,
     private noteService: NoteService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+    this.user$ = this.authenticationService.user$;
+  }
+
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -38,6 +46,15 @@ export class NoteDetailComponent implements OnInit {
       title: [null, [Validators.required]],
       text: [null],
       priority: [Priority.Normal],
+    });
+
+    this.user$.subscribe(user => {
+      for (const control in this.f) {
+        if (!user)
+          this.f[control].disable();
+        else
+          this.f[control].enable();
+      }
     });
 
     this.noteService.get(this.id).subscribe(data => {

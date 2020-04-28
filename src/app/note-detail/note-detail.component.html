@@ -1,6 +1,6 @@
 <div class="card bg-light">
   <div class="card-body">
-    <h5 class="card-title">Item detail</h5>
+    <h5 class="card-title">Note detail</h5>
 
     <form [formGroup]="validateForm" (ngSubmit)="onSubmit()">
       <div class="form-group required row">
@@ -40,10 +40,6 @@
             <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" (click)="buttonClicked('down')">
             </button>
           </div>
-        </div>
-        <label for="text" class="col-md-2 col-form-label">Rating</label>
-        <div class="col-md-2">
-          <ngb-rating formControlName="rating" [max]="5"></ngb-rating>
         </div>
       </div>
 

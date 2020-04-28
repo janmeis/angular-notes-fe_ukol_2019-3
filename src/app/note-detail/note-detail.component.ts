@@ -1,20 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { NoteService } from 'src/services/note.service';
+import { NoteService } from 'src/app/services/note.service';
+import { markControlsDirty } from '../components/common-functions';
 import { INote, Priority } from './note';
 
-export function markControlsDirty(group: FormGroup | FormArray): void {
-  Object.keys(group.controls).forEach((key: string) => {
-    const abstractControl = group.controls[key];
-
-    if (abstractControl instanceof FormGroup || abstractControl instanceof FormArray)
-      markControlsDirty(abstractControl);
-    else
-      abstractControl.markAsDirty();
-  });
-}
 
 @Component({
   selector: 'app-note-detail',
@@ -47,7 +38,6 @@ export class NoteDetailComponent implements OnInit {
       title: [null, [Validators.required]],
       text: [null],
       priority: [Priority.Normal],
-      rating: 0
     });
 
     this.noteService.get(this.id).subscribe(data => {
@@ -81,7 +71,7 @@ export class NoteDetailComponent implements OnInit {
     if (this.validateForm.invalid)
       return of(false);
 
-    const note = { ...this.validateForm.value, created: new Date(), color: 'grey' } as INote;
+    const note = { ...this.validateForm.value, created: new Date() } as INote;
     return this.noteService.save(this.id, note);
   }
 

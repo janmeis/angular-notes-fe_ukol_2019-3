@@ -12,13 +12,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { NoteListComponent } from './note-list/note-list.component';
+import { DatePipe } from '@angular/common';
+import { FbaseDatePipe } from './components/pipes/fbase-date.pipe';
+import { TruncateTextPipe } from './components/pipes/truncate-text.pipe';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NoteDetailComponent,
-    NoteListComponent
+    NoteListComponent,
+    FbaseDatePipe,
+    TruncateTextPipe,
+    LoginDialogComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -32,7 +39,9 @@ import { NoteListComponent } from './note-list/note-list.component';
     ReactiveFormsModule,
     TranslocoRootModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

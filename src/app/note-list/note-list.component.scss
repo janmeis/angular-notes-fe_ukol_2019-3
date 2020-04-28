@@ -1,15 +1,20 @@
 table {
-  td > a {
-    cursor: pointer;
-    i {
-      color: red;
-    }
-  }
-
   tr > {
-    td:nth-last-child(3),
-    td:nth-last-child(2),
-    td:last-child {
+    td > a {
+      cursor: pointer;
+      i {
+        color: red;
+      }
+    }
+    td:first-child {
+      & > a,
+      & > a:hover {
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+    td:nth-child(3),
+    td:nth-child(5) {
       text-align: center;
     }
   }

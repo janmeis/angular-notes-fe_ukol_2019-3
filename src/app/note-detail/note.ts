@@ -12,8 +12,6 @@ export interface INote {
   title: string;
   text: string;
   priority: Priority;
-  rating: number;
-  color: string;
   created: Date;
 }
 

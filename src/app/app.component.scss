@@ -17,13 +17,18 @@
   .navbar-collapse {
     margin-left: 6.5%;
   }
-  ul.navbar-nav.ml-md-auto {
-    li:not(:last-child) {
-      margin-right: 10px;
+  ul.navbar-nav.ml-auto {
+    li {
+      & > a {
+        cursor: pointer;
+      }
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
     }
   }
 }
 
-.container {
+main {
   margin-top: 2%;
 }

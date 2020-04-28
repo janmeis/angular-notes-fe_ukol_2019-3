@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="validateForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="form-group required row">
+      <label for="email" class="col-md-2 col-form-label">Email</label>
+      <div class="col-md-10">
+        <input type="email" class="form-control" id="email" formControlName="email" value=""
+        [ngClass]="{'is-invalid': f.email.dirty && f.email.errors?.required, 'is-valid': f.email.dirty && f.email.valid }">
+        <div *ngIf="f.email.dirty && f.email.errors?.required" class="invalid-tooltip">
+          Please choose a unique and valid email.
+        </div>
+      </div>
+    </div>
+    <div class="form-group required row">
+      <label for="password" class="col-md-2 col-form-label">Password</label>
+      <div class="col-md-10">
+        <input type="password" class="form-control" id="password" formControlName="password" value=""
+        [ngClass]="{'is-invalid': f.password.dirty && f.password.errors?.required, 'is-valid': f.password.dirty && f.password.valid }">
+        <div *ngIf="f.password.dirty && f.password.errors?.required" class="invalid-tooltip">
+          Please choose a unique and valid password.
+        </div>
+      </div>
+      <div [ngStyle]="{display: !!error ? 'block' : 'none'}" class="invalid-feedback">
+        {{ error }}
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-lg btn-outline-secondary btn-block" type="button" (click)="fillIn()">Fill in</button>
+      <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Sign in</button>
+    </div>
+  </form>

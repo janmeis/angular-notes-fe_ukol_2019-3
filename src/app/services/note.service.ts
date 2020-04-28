@@ -4,18 +4,8 @@ import { firestore } from 'firebase';
 import { from, Observable, of } from 'rxjs';
 import { catchError, first, flatMap, map } from 'rxjs/operators';
 import { INote, INoteWithRef } from 'src/app/note-detail/note';
+import { sortFn } from '../components/common-functions';
 
-export function sortFn(a: string, b: string): number {
-  const a1 = a.toLowerCase();
-  const b1 = b.toLowerCase();
-
-  if (a1 > b1)
-    return 1;
-  if (a1 < b1)
-    return -1;
-
-  return 0;
-}
 
 @Injectable({
   providedIn: 'root'

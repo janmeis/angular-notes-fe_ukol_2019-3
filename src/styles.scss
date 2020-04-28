@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+.form-group.required label::after {
+  content: "*";
+  color: red;
+  margin-left: 2px;
+}
+
+.invalid-tooltip {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 2.2rem;
+}
+
+.btn-group {
+  .btn-outline-secondary:hover {
+    color: #0062cc;
+    border-color: #6c757d;
+    background-color: transparent;
+  }
+  & > button:nth-child(2) {
+    width: 150px;
+  }
+  & > button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  & > button:not(:first-child) {
+    border-left-style: none;
+  }
+  & > button:not(:last-child) {
+    border-right-style: none;
+  }
+  & > button:last-child::after {
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+  }
+}
+
+ngb-rating {
+  position: absolute;
+  font-size: 32px;
+  top: -15%;
+  left: -50%;
+}
+
+.priority-Low::before {
+  content: "\f088";
+}
+.priority-VeryLow::before {
+  content: "\f088  \f088";
+}
+.priority-UltraLow::before {
+  content: "\f088  \f088  \f088";
+}
+.priority-Normal::before {
+  content: "\f2b5";
+}
+.priority-High::before {
+  content: "\f087";
+}
+.priority-VeryHigh::before {
+  content: "\f087  \f087";
+}
+.priority-UltraHigh::before {
+  content: "\f087  \f087  \f087";
+}

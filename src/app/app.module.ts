@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
 import { FbaseDatePipe } from './components/pipes/fbase-date.pipe';
 import { TruncateTextPipe } from './components/pipes/truncate-text.pipe';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { NoteCardsComponent } from './note-cards/note-cards.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { LoginDialogComponent } from './components/login-dialog/login-dialog.com
     NoteListComponent,
     FbaseDatePipe,
     TruncateTextPipe,
-    LoginDialogComponent
+    LoginDialogComponent,
+    NoteCardsComponent
   ],
   imports: [
     AngularFireAuthModule,

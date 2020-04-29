@@ -1,0 +1,20 @@
+<div class="card-columns">
+  <div *ngFor="let note of notes$ | async" class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        <a [routerLink]="'/detail/' + note.refId">{{note.title}}</a>
+      </h5>
+      <p class="card-text">
+        {{note.text}}
+      </p>
+      <div class="card-text row">
+        <div class="col-md-6">
+          <i class="fa" [ngClass]="'priority-' + Priority[note.priority]"></i>
+        </div>
+        <small class="col-md-6 text-muted">
+          {{note.created | fbaseDate:true }}
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

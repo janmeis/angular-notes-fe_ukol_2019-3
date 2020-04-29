@@ -9,11 +9,17 @@
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown" [ngClass] = "{show:collapsed}">
         <ul class="navbar-nav mr-auto mt-3">
-          <li *ngIf="user$ | async" class="nav-item" [ngClass]="{'active': location.path().indexOf('detail')>=0}">
+          <li *ngIf="user$ | async" class="nav-item" [ngClass]="{'active': location.path().indexOf('detail/new')>=0}">
             <a class="nav-link" routerLink="/detail/new">{{'app.new_note' | transloco }}</a>
+          </li>
+          <li *ngIf="location.path().indexOf('detail')>=0 && location.path().indexOf('new') < 0" class="nav-item active">
+            <span class="nav-link">{{'app.detail' | transloco }}</span>
           </li>
           <li class="nav-item" [ngClass]="{'active': location.path().length==0}">
             <a class="nav-link" routerLink="/">{{'app.list' | transloco}}</a>
+          </li>
+          <li class="nav-item" [ngClass]="{'active': location.path().indexOf('cards')>=0}">
+            <a class="nav-link" routerLink="/cards">{{'app.cards' | transloco}}</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mt-3">

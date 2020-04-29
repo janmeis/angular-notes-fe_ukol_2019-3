@@ -1,7 +1,9 @@
 {
   "app": {
     "new_note": "Nová poznámka",
+    "detail": "Detail poznámky",
     "list": "Seznam",
+    "cards": "Karty",
     "signed_user": "Přihlášený uživatel",
     "sign_out": "Odhlásit",
     "sign_in": "Přihlásit"

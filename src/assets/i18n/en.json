@@ -31,8 +31,9 @@
     "priority": "Priority",
     "created": "Created",
     "action": "Action",
-    "are_you_sure_you_want_to_delete": "Are you sure you want to delete '{value}'?",
+    "are_you_sure_you_want_to_delete": "Are you sure you want to delete '{{value}}'?",
     "cancel": "Cancel",
-    "ok": "Ok"
+    "ok": "Ok",
+    "items_per_page": "{{value}} items per page"
   }
 }

@@ -1,3 +1,5 @@
+import { DatePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -8,26 +10,26 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { TranslocoRootModule } from './transloco-root.module';
-import { NoteDetailComponent } from './note-detail/note-detail.component';
-import { NoteListComponent } from './note-list/note-list.component';
-import { DatePipe } from '@angular/common';
+import { NgbdSortableHeader } from './components/directives/sortable.directive';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { FbaseDatePipe } from './components/pipes/fbase-date.pipe';
 import { TruncateTextPipe } from './components/pipes/truncate-text.pipe';
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { NoteCardsComponent } from './note-cards/note-cards.component';
+import { NoteDetailComponent } from './note-detail/note-detail.component';
+import { NoteListComponent } from './note-list/note-list.component';
+import { TranslocoRootModule } from './transloco-root.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FbaseDatePipe,
+    LoginDialogComponent,
+    NgbdSortableHeader,
+    NoteCardsComponent,
     NoteDetailComponent,
     NoteListComponent,
-    FbaseDatePipe,
     TruncateTextPipe,
-    LoginDialogComponent,
-    NoteCardsComponent
   ],
   imports: [
     AngularFireAuthModule,

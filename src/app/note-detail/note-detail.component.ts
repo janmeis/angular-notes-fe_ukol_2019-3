@@ -6,7 +6,6 @@ import { NoteService } from 'src/app/services/note.service';
 import { markControlsDirty } from '../components/common-functions';
 import { INote, Priority } from './note';
 import { AuthenticationService } from '../services/authentication.service';
-import { first } from 'rxjs/operators';
 
 
 @Component({

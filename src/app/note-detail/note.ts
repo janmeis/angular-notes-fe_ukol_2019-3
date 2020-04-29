@@ -18,3 +18,12 @@ export interface INote {
 export interface INoteWithRef extends INote {
   refId: string;
 }
+
+// <see cref="https://ng-bootstrap.github.io/#/components/table/examples#complete">
+export type SortColumn = keyof INoteWithRef | '';
+export type SortDirection = 'asc' | 'desc' | '';
+
+export interface ISortEvent {
+  column: SortColumn;
+  direction: SortDirection;
+}

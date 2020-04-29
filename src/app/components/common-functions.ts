@@ -1,6 +1,7 @@
 import { FormGroup, FormArray } from '@angular/forms';
+import { SortDirection, INote, SortColumn, INoteWithRef } from '../note-detail/note';
 
-export function markControlsDirty(group: FormGroup | FormArray): void {
+export const markControlsDirty = (group: FormGroup | FormArray): void => {
   Object.keys(group.controls).forEach((key: string) => {
     const abstractControl = group.controls[key];
 
@@ -11,14 +12,8 @@ export function markControlsDirty(group: FormGroup | FormArray): void {
   });
 }
 
-export function sortFn(a: string, b: string): number {
+export const compare = (a: string, b: string): number => {
   const a1 = a.toLowerCase();
   const b1 = b.toLowerCase();
-
-  if (a1 > b1)
-    return 1;
-  if (a1 < b1)
-    return -1;
-
-  return 0;
-}
+  return a1 < b1 ? -1 : a1 > b1 ? 1 : 0;
+};

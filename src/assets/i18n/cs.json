@@ -31,8 +31,9 @@
     "priority": "Priorita",
     "created": "Vytvořeno",
     "action": "Akce",
-    "are_you_sure_you_want_to_delete": "Opravdu chcete smazat '{value}'?",
+    "are_you_sure_you_want_to_delete": "Opravdu chcete smazat '{{value}}'?",
     "cancel": "Zrušit",
-    "ok": "Ok"
+    "ok": "Ok",
+    "items_per_page": "Počet položek na stránce: {{value}}"
   }
 }

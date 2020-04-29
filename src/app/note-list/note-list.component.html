@@ -1,47 +1,62 @@
-<table class="table">
-    <colgroup>
-      <col style="width:15%">
-      <col style="width:62%">
-      <col style="width:10%">
-      <col style="width:10%">
-      <col *ngIf="user$ | async" style="width:3%">
-    </colgroup>
-  <thead>
-    <tr>
-      <th scope="col">{{'note-list.title' | transloco}}</th>
-      <th scope="col">{{'note-list.text' | transloco}}</th>
-      <th scope="col">{{'note-list.priority' | transloco}}</th>
-      <th scope="col">{{'note-list.created' | transloco}}</th>
-      <th *ngIf="user$ | async" >{{'note-list.action' | transloco}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let note of notes$ | async">
-      <td scope="row">
-        <a [routerLink]="'/detail/' + note.refId">{{note.title}}</a>
-      </td>
-      <td>
-        <span [ngbPopover]="note.text" [triggers]="note.text.length > 80 ? 'hover' : ''" container="body">
-          {{note.text | truncateText:80}}
-        </span>
-      </td>
-      <td>
-        <i class="fa" [ngClass]="'priority-' + Priority[note.priority]"></i>
-      </td>
-      <td>{{note.created | fbaseDate}}</td>
-      <td *ngIf="user$ | async">
-        <a [ngbPopover]="popContent" [autoClose]="false" triggers="manual" #pop="ngbPopover" (click)="pop.open()" placement="left">
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </a>
+<form>
+  <table class="table table-striped">
+      <colgroup>
+        <col style="width:15%">
+        <col style="width:62%">
+        <col style="width:10%">
+        <col style="width:10%">
+        <col *ngIf="user$ | async" style="width:3%">
+      </colgroup>
+    <thead>
+      <tr>
+        <th scope="col" sortable="title" (sort)="onSort($event)">{{'note-list.title' | transloco}}</th>
+        <th scope="col" sortable="text" (sort)="onSort($event)">{{'note-list.text' | transloco}}</th>
+        <th scope="col" sortable="priority" (sort)="onSort($event)">{{'note-list.priority' | transloco}}</th>
+        <th scope="col" sortable="created" (sort)="onSort($event)">{{'note-list.created' | transloco}}</th>
+        <th *ngIf="user$ | async" >{{'note-list.action' | transloco}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let note of noteService.notes$ | async">
+        <td scope="row">
+          <a [routerLink]="'/detail/' + note.refId">{{note.title}}</a>
+        </td>
+        <td>
+          <span [ngbPopover]="note.text" [triggers]="note.text.length > 80 ? 'hover' : ''" container="body">
+            {{note.text | truncateText:80}}
+          </span>
+        </td>
+        <td>
+          <i class="fa" [ngClass]="'priority-' + Priority[note.priority]"></i>
+        </td>
+        <td>{{note.created | fbaseDate}}</td>
+        <td *ngIf="user$ | async">
+          <a [ngbPopover]="popContent" [autoClose]="false" triggers="manual" #pop="ngbPopover" (click)="pop.open()" placement="left">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </a>
 
-        <ng-template #popContent>
-          {{'note-list.are_you_sure_you_want_to_delete' | transloco: {value: note.title} }}
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" (click)="pop.close()">{{'note-list.cancel' | transloco}}</button>
-            <button type="button" class="btn btn-danger" (click)="popClose(pop, note.refId)">{{'note-list.ok' | transloco}}</button>
-          </div>
-        </ng-template>
-      </td>
-    </tr>
-  </tbody>
-</table>
+          <ng-template #popContent>
+            {{'note-list.are_you_sure_you_want_to_delete' | transloco: {value: note.title} }}
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" (click)="pop.close()">{{'note-list.cancel' | transloco}}</button>
+              <button type="button" class="btn btn-danger" (click)="popClose(pop, note.refId)">{{'note-list.ok' | transloco}}</button>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="(noteService.total$ | async)!" [(page)]="noteService.page" [pageSize]="noteService.pageSize">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="noteService.pageSize">
+      <option [ngValue]="2">{{'note-list.items_per_page' | transloco: {value: '2'} }}</option>
+      <option [ngValue]="5">{{'note-list.items_per_page' | transloco: {value: '5'} }}</option>
+      <option [ngValue]="10">{{'note-list.items_per_page' | transloco: {value: '10'} }}</option>
+      <option [ngValue]="20">{{'note-list.items_per_page' | transloco: {value: '20'} }}</option>
+      <option [ngValue]="50">{{'note-list.items_per_page' | transloco: {value: '50'} }}</option>
+    </select>
+  </div>
+</form>

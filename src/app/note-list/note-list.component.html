@@ -8,11 +8,11 @@
     </colgroup>
   <thead>
     <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Text</th>
-      <th scope="col">Priority</th>
-      <th scope="col">Created</th>
-      <th *ngIf="user$ | async" >Action</th>
+      <th scope="col">{{'note-list.title' | transloco}}</th>
+      <th scope="col">{{'note-list.text' | transloco}}</th>
+      <th scope="col">{{'note-list.priority' | transloco}}</th>
+      <th scope="col">{{'note-list.created' | transloco}}</th>
+      <th *ngIf="user$ | async" >{{'note-list.action' | transloco}}</th>
     </tr>
   </thead>
   <tbody>
@@ -35,10 +35,10 @@
         </a>
 
         <ng-template #popContent>
-          Are you sure you want to delete '{{note.title}}'?
+          {{'note-list.are_you_sure_you_want_to_delete' | transloco: {value: note.title} }}
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" (click)="pop.close()">Cancel</button>
-            <button type="button" class="btn btn-danger" (click)="popClose(pop, note.refId)">Ok</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="pop.close()">{{'note-list.cancel' | transloco}}</button>
+            <button type="button" class="btn btn-danger" (click)="popClose(pop, note.refId)">{{'note-list.ok' | transloco}}</button>
           </div>
         </ng-template>
       </td>

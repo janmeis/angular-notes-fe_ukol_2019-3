@@ -38,7 +38,7 @@ export class NoteDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id') || 'new';
 
     this.priorityKeys = this.fillPriority()
 
@@ -80,7 +80,6 @@ export class NoteDetailComponent implements OnInit {
         this.router.navigate(['/']);
       }
     })
-
   }
 
   private save(): Observable<boolean> {
@@ -88,7 +87,10 @@ export class NoteDetailComponent implements OnInit {
     if (this.validateForm.invalid)
       return of(false);
 
-    const note = { ...this.validateForm.value, created: new Date() } as INote;
+    const note = this.validateForm.value as INote;
+    if (this.id == 'new')
+      note.created = new Date();
+
     return this.noteService.save(this.id, note);
   }
 

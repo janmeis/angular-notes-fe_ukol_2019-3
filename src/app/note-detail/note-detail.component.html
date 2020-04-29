@@ -1,6 +1,6 @@
 <div class="card bg-light">
   <div class="card-body">
-    <h5 class="card-title">Note detail
+    <h5 class="card-title">{{'note-detail.note_detail' | transloco}}
       <button type="button" class="close" routerLink="/">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -8,21 +8,21 @@
 
     <form [formGroup]="validateForm" (ngSubmit)="onSubmit()">
       <div class="form-group required row">
-        <label for="title" class="col-md-2 col-form-label">Title</label>
+        <label for="title" class="col-md-2 col-form-label">{{'note-detail.title' | transloco}}</label>
         <div class="col-md-10">
           <input class="form-control"
                   formControlName="title"
                   type="text"
                   [ngClass]="{'is-invalid': f.title.dirty && f.title.errors?.required, 'is-valid': f.title.dirty && f.title.valid }">
           <div *ngIf="f.title.dirty && f.title.errors?.required" class="invalid-tooltip">
-            Please choose a unique and valid title.
+            {{'note-detail.please_choose_a_valid_title' | transloco}}
           </div>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="text"
-                class="col-md-2 col-form-label">Text</label>
+                class="col-md-2 col-form-label">{{'note-detail.text' | transloco}}</label>
         <div class="col-md-10">
           <textarea  class="form-control"
                   formControlName="text"
@@ -33,7 +33,7 @@
 
       <div class="form-group row">
         <label for="priority"
-                class="col-md-2 col-form-label">Priority</label>
+                class="col-md-2 col-form-label">{{'note-detail.priority' | transloco}}</label>
         <div class="col-md-3">
           <div class="btn-group dropup">
             <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" (click)="buttonClicked('up')">
@@ -47,9 +47,7 @@
         </div>
       </div>
 
-      <div class="btn-group float-right" role="group">
-        <button *ngIf="user$ | async" type="submit" class="btn btn-primary">Submit</button>
-      </div>
+      <button *ngIf="user$ | async" type="submit" class="btn btn-primary float-right">{{'note-detail.submit' | transloco}}</button>
     </form>
 
   </div>

@@ -1,11 +1,10 @@
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { Observable } from 'rxjs';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { AuthenticationService } from './services/authentication.service';
-import { first } from 'rxjs/operators';
+import { TranslationService } from './services/translation.service';
 
 @Component({
   selector: 'app-root',
@@ -16,23 +15,29 @@ import { first } from 'rxjs/operators';
 export class AppComponent {
   title = 'angular-notes';
   user$: Observable<firebase.User>;
-  collapsed = true;
+  collapsed = false;
 
   get activeLang() {
-    return this.translocoService.getActiveLang();
+    return this.translation.activeLang;
+  }
+
+  set activeLang(value: string) {
+    this.translation.activeLang = value;
+    window.location.reload();
+  }
+
+  get otherLang() {
+    return this.translation.otherLang;
   }
 
   constructor(
     private authenticationService: AuthenticationService,
-    private modalService: NgbModal,
     public location: Location,
-    private translocoService: TranslocoService
+    private modalService: NgbModal,
+    private translation: TranslationService,
+
   ) {
     this.user$ = this.authenticationService.user$;
-  }
-
-  setLang(lang: string) {
-    this.translocoService.setActiveLang(lang);
   }
 
   signIn() {

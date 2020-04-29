@@ -1,6 +1,36 @@
 {
   "app": {
-    "app_is_running": "'{{value}}' is running",
-    "welcome": "Welcome"
+    "new_note": "New note",
+    "list": "List",
+    "signed_user": "Signed user",
+    "sign_out": "Sign out",
+    "sign_in": "Sign in"
+  },
+  "login-dialog": {
+    "please_sign_in": "Please sign in",
+    "email": "Email",
+    "please_choose_a_unique_and_valid_email": "Please choose a unique and valid email",
+    "password": "Password",
+    "please_choose_a_valid_password": "Please choose a valid password",
+    "fill_in": "Fill in",
+    "sign_in": "Sign in"
+  },
+  "note-detail": {
+    "note_detail": "Note detail",
+    "title": "Title",
+    "please_choose_a_valid_title": "Please choose a valid title",
+    "text": "Text",
+    "priority": "Priority",
+    "submit": "Submit"
+  },
+  "note-list": {
+    "title": "Title",
+    "text": "Text",
+    "priority": "Priority",
+    "created": "Created",
+    "action": "Action",
+    "are_you_sure_you_want_to_delete": "Are you sure you want to delete '{value}'?",
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }

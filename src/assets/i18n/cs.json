@@ -1,6 +1,36 @@
 {
   "app": {
-    "app_is_running": "Aplikace '{{value}}' funguje",
-    "welcome": "Nazdar"
+    "new_note": "Nová poznámka",
+    "list": "Seznam",
+    "signed_user": "Přihlášený uživatel",
+    "sign_out": "Odhlásit",
+    "sign_in": "Přihlásit"
+  },
+  "login-dialog": {
+    "please_sign_in": "Přihlašte se, prosím",
+    "email": "Email",
+    "please_choose_a_unique_and_valid_email": "Zvolte jedinečný a platný email",
+    "password": "Heslo",
+    "please_choose_a_valid_password": "Zadejte platné heslo",
+    "fill_in": "Doplnit",
+    "sign_in": "Přihlásit"
+  },
+  "note-detail": {
+    "note_detail": "Detail poznámky",
+    "title": "Nadpis",
+    "please_choose_a_valid_title": "Zadejte platný nadpis",
+    "text": "Text",
+    "priority": "Priorita",
+    "submit": "Uložit"
+  },
+  "note-list": {
+    "title": "Nadpis",
+    "text": "Text",
+    "priority": "Priorita",
+    "created": "Vytvořeno",
+    "action": "Akce",
+    "are_you_sure_you_want_to_delete": "Opravdu chcete smazat '{value}'?",
+    "cancel": "Zrušit",
+    "ok": "Ok"
   }
 }

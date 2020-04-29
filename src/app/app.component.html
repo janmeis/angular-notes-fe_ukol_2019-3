@@ -1,34 +1,43 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" title="BSC Banking Software Company">
+      <a class="navbar-brand" title="BSC Banking Software Company" href="#">
         <img src="../assets/images/logo-bsc2018-basic.svg" alt="BSC Banking Software Company">
       </a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <li *ngIf="user$ | async" class="nav-item">
-            <a class="nav-link" routerLink="/detail/new">New note</a>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown" [ngClass] = "{show:collapsed}">
+        <ul class="navbar-nav mr-auto mt-3">
+          <li *ngIf="user$ | async" class="nav-item" [ngClass]="{'active': location.path().indexOf('detail')>=0}">
+            <a class="nav-link" routerLink="/detail/new">{{'app.new_note' | transloco }}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/">List</a>
+          <li class="nav-item" [ngClass]="{'active': location.path().length==0}">
+            <a class="nav-link" routerLink="/">{{'app.list' | transloco}}</a>
           </li>
         </ul>
-        <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
-          <ul class="navbar-nav ml-auto">
-            <ng-container *ngIf="(user$ | async) as user;else notUser">
-              <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
-                <a class="nav-link" ngbDropdownToggle id="navbarDropdown" role="button">
-                  {{user.email}}
-                </a>
-                <div ngbDropdownMenu aria-labelledby="navbarDropdown" class="dropdown-menu">
-                  <a ngbDropdownItem (click)="signOut()">Sign out</a>
-                </div>
-              </li>
-            </ng-container>
-          </ul>
-        </div>
+        <ul class="navbar-nav ml-auto mt-3">
+          <ng-container *ngIf="(user$ | async) as user;else notUser">
+            <li class="nav-item" ngbDropdown placement="bottom-right">
+              <a class="nav-link" ngbDropdownToggle id="navbarDropdownUser" role="button" [title]="'app.signed_user' | transloco">
+                {{user.email}}
+              </a>
+              <div ngbDropdownMenu aria-labelledby="navbarDropdownUser" class="dropdown-menu">
+                <a ngbDropdownItem (click)="signOut()">{{'app.sign_out' | transloco}}</a>
+              </div>
+            </li>
+          </ng-container>
+          <li class="nav-item" ngbDropdown>
+            <a class="nav-link" ngbDropdownToggle id="navbarDropdownLang" role="button" [title]="activeLang">
+              <i [ngClass]="activeLang + '-lang'"></i>
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown" class="dropdown-menu">
+              <a ngbDropdownItem (click)="activeLang=otherLang" [title]="otherLang">
+                <i [ngClass]="otherLang + '-lang'"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -39,6 +48,6 @@
 
   <ng-template #notUser>
     <li class="nav-item">
-      <a class="nav-link" (click)="signIn()">Sign in</a>
+      <a class="nav-link" (click)="signIn()">{{'app.sign_in' | transloco}}</a>
     </li>
   </ng-template>

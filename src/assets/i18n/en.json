@@ -8,6 +8,14 @@
     "sign_out": "Sign out",
     "sign_in": "Sign in"
   },
+  "confirm-dialog": {
+    "unsaved_note": "Unsaved note",
+    "are_you_sure_you_want_to_leave_the_page_without_saving_the_results": "Are you sure you want to leave the page without saving the results?",
+    "this_operation_cannot_be_undone": "This operation cannot be undone",
+    "close": "Close",
+    "leave_without_saving_changes": "Leave without saving changes",
+    "save_changes": "Save changes"
+  },
   "login-dialog": {
     "please_sign_in": "Please sign in",
     "email": "Email",
@@ -31,7 +39,7 @@
     "priority": "Priority",
     "created": "Created",
     "action": "Action",
-    "are_you_sure_you_want_to_delete": "Are you sure you want to delete '{{value}}'?",
+    "are_you_sure_you_want_to_delete": "Are you sure you want to delete {{value}}?",
     "cancel": "Cancel",
     "ok": "Ok",
     "items_per_page": "{{value}} items per page"

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { NoteService } from 'src/app/services/note.service';
 import { markControlsDirty } from '../components/common-functions';
-import { INote, Priority } from './note';
+import { CanComponentDeactivate } from '../components/guards/can-deactivate.guard';
 import { AuthenticationService } from '../services/authentication.service';
+import { DialogService } from '../services/dialog.service';
+import { INote, Priority } from './note';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './note-detail.component.html',
   styleUrls: ['./note-detail.component.scss']
 })
-export class NoteDetailComponent implements OnInit {
+export class NoteDetailComponent implements OnInit, CanComponentDeactivate {
   validateForm: FormGroup;
   id: string;
   priorityKeys: number[];
@@ -26,6 +28,7 @@ export class NoteDetailComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
+    private dialogService: DialogService,
     private fb: FormBuilder,
     private noteService: NoteService,
     private route: ActivatedRoute,
@@ -33,8 +36,6 @@ export class NoteDetailComponent implements OnInit {
   ) {
     this.user$ = this.authenticationService.user$;
   }
-
-
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || 'new';
@@ -79,6 +80,13 @@ export class NoteDetailComponent implements OnInit {
         this.router.navigate(['/']);
       }
     })
+  }
+
+  canDeactivate(): Observable<boolean> {
+    if (this.validateForm.dirty)
+      return this.dialogService.dirtyConfirmation(() => this.save());
+
+    return of(true);
   }
 
   private save(): Observable<boolean> {

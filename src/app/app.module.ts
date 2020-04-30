@@ -18,6 +18,7 @@ import { NoteCardsComponent } from './note-cards/note-cards.component';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { TranslocoRootModule } from './transloco-root.module';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { TranslocoRootModule } from './transloco-root.module';
     NoteDetailComponent,
     NoteListComponent,
     TruncateTextPipe,
+    ConfirmDialogComponent,
   ],
   imports: [
     AngularFireAuthModule,
@@ -44,7 +46,7 @@ import { TranslocoRootModule } from './transloco-root.module';
     TranslocoRootModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

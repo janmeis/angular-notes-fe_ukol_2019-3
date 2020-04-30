@@ -8,6 +8,14 @@
     "sign_out": "Odhlásit",
     "sign_in": "Přihlásit"
   },
+  "confirm-dialog": {
+    "unsaved_note": "Neuložená poznámka",
+    "are_you_sure_you_want_to_leave_the_page_without_saving_the_results": "Opravdu chcete odejít ze stránky aniž byste uložili změny?",
+    "this_operation_cannot_be_undone": "Tento úkon nelze zvrátit",
+    "close": "Zavřít",
+    "leave_without_saving_changes": "Zahodit změny",
+    "save_changes": "Uložit změny"
+  },
   "login-dialog": {
     "please_sign_in": "Přihlašte se, prosím",
     "email": "Email",

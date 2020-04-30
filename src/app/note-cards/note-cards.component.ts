@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Priority } from '../note-detail/note';
 import { NoteService } from '../services/note.service';
 
@@ -7,10 +7,14 @@ import { NoteService } from '../services/note.service';
   templateUrl: './note-cards.component.html',
   styleUrls: ['./note-cards.component.scss']
 })
-export class NoteCardsComponent {
+export class NoteCardsComponent implements OnInit {
   Priority = Priority
 
   constructor(
     public noteService: NoteService,
   ) { }
+
+  ngOnInit(): void {
+    this.noteService.reset();
+  }
 }

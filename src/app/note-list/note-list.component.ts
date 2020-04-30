@@ -1,4 +1,4 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Component, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { NoteService } from 'src/app/services/note.service';
@@ -12,7 +12,7 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './note-list.component.html',
   styleUrls: ['./note-list.component.scss']
 })
-export class NoteListComponent {
+export class NoteListComponent implements OnInit{
   notes$: Observable<INoteWithRef[]>;
   refId: string[];
   user$: Observable<firebase.User>;
@@ -25,6 +25,10 @@ export class NoteListComponent {
     public noteService: NoteService,
   ) {
     this.user$ = this.authenticationService.user$;
+  }
+
+  ngOnInit(): void {
+    this.noteService.reset(5);
   }
 
   popClose(pop: NgbPopover, id: string) {

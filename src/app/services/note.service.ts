@@ -10,7 +10,6 @@ interface ISearchResult {
   notes: INoteWithRef[];
   total: number;
 }
-
 interface IState {
   page: number;
   pageSize: number;
@@ -18,6 +17,7 @@ interface IState {
   sortColumn: SortColumn;
   sortDirection: SortDirection;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,13 +27,14 @@ export class NoteService {
   private _notes$ = new BehaviorSubject<INoteWithRef[]>([]);
   private _total$ = new BehaviorSubject<number>(0);
 
-  private _state = {
+  private readonly initialState = {
     page: 1,
     pageSize: 5,
     searchTerm: '',
     sortColumn: 'title',
     sortDirection: 'asc'
   } as IState;
+  private _state = { ...this.initialState } as IState;
 
   get notes$() { return this._notes$.asObservable(); }
   get total$() { return this._total$.asObservable(); }
@@ -105,6 +106,19 @@ export class NoteService {
           return of(false);
         })
       );
+  }
+
+  reset(pageSize?: number) {
+    this._state = { ...this.initialState } as IState;
+    if (pageSize) {
+      this._state.pageSize = +pageSize;
+      this._search$.next();
+    } else
+    this.total$.pipe(first())
+      .subscribe(total => {
+        this._state.pageSize = total || 9999;
+        this._search$.next();
+      });
   }
 
   private _set(patch: Partial<IState>) {

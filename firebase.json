@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "angular-notes",
+      "public": "dist/angular-notes",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

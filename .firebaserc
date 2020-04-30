@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-notes-5df80": {
+      "hosting": {
+        "angular-notes": [
+          "angular-notes-5df80"
+        ]
+      }
+    }
+  }
+}

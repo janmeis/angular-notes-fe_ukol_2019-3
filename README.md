@@ -1,34 +1,40 @@
-# AngularNotes
+# Aplikace Angular notes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+## Implementace
 
-## Development server
+- Aplikace v Angular 9 vytvořena pomocí Angular CLI.
+- Databáze [Firebase](https://console.firebase.google.com/).
+- Autorizace taktéž Firebase (viz též [Angular 9/8 Authentication with Firebase (Google, Email & Password): Login, Register, Email Verification and Password Recovery](https://www.techiediaries.com/angular-firebase/angular-9-firebase-authentication-email-google-and-password/)), vytvořeno ve firebase console a přílušné angular knihovny přidány pomocí npm.
+- CSS framework [bootstrap](https://getbootstrap.com), instalace npm.
+- Knihovna [ng-bootstrap](https://ng-bootstrap.github.io/#/home), instalace npm.
+- Lokalizace [transloco](https://netbasal.gitbook.io/transloco/) (viz též 
+  [Introducing Transloco: Angular Internationalization Done Righ](https://netbasal.com/introducing-transloco-angular-internationalization-done-right-54710337630c)), npm, lokalizované texty v json souborech assets/i18n.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Popis a chování aplikace
 
-## Code scaffolding
+- Nepřihlášený uživatel může aplikaci používat, avšak nemůže nic měnit (zadávat, editovat, mazat poznámky).
+- Autorizace - Přihlásit/Sign in - okrové tlačítko Doplnit/Fill in umožňuje doplnit přihlašovací údaje. Při zadání špatných údajů chybová hláška (vždy anglicky - posílá ji firebase)
+- Vlaječka - změna jazyka  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Seznam 
 
-## Build
+- Stránkování, možnost řazení kliknutím na příslušný nadpis (implementace podle [Complete example](https://ng-bootstrap.github.io/#/components/table/examples#complete)).
+- **Detail poznámky** - klik na hyperlink v 1. sloupci; **Text** oříznut - celý v popupu, **Akce** - smazaní  poznámky.
+- Karty - zobrazení podobné Google Keep.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Detail poznámky
 
-## Running unit tests
+- Nová poznámka - horní menu.
+- Nadpis/Title povinný, hlídáno opuštění stránky.
+- Priorita 3 Thumbs up - 3 Thumbs down - volba šipkami.
+- Nelze uložit pokud není zadání validní.
+- Při přechodu na jinou stránku bez uložení editované poznámky - Deactivate guard - možnost dodatečného uložení.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Nedodělky/možná vylepšení
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Notes
-
- [Angular 9/8 Authentication with Firebase (Google, Email & Password): Login, Register, Email Verification and Password Recovery](https://www.techiediaries.com/angular-firebase/angular-9-firebase-authentication-email-google-and-password/)  
- [Introducing Transloco: Angular Internationalization Done Righ](https://netbasal.com/introducing-transloco-angular-internationalization-done-right-54710337630c)  
- [transloco](https://netbasal.gitbook.io/transloco/)  
- [ngneat](https://github.com/ngneat/transloco-keys-manager)  
+- Nestihnul jsem napsat testy - pokusím se ještě doplnit.
+- Detail - priorita - vytvořit jako samostatnou komponentu
+- při prvním zobrazená seznamu se nezobrazuje směr řazení (šipka).
+- karty např řazení, přesouvání, barvy...
+- zapamatovat si stav tabulky (řazení, stránkování, event. filtry).
+- zlepšit logování (aktuálně jenom console.log), error handling (error interceptor)

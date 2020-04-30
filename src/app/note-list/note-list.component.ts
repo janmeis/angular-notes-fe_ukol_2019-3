@@ -28,7 +28,7 @@ export class NoteListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.noteService.reset(5);
+    this.noteService.reset({pageSize: 5});
   }
 
   popClose(pop: NgbPopover, id: string) {

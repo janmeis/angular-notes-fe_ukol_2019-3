@@ -3,19 +3,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { firestore } from 'firebase';
 import { BehaviorSubject, from, Observable, of, Subject } from 'rxjs';
 import { catchError, first, flatMap, map } from 'rxjs/operators';
-import { INote, INoteWithRef, SortColumn, SortDirection } from 'src/app/note-detail/note';
+import { INote, INoteWithRef, IState, SortColumn, SortDirection } from 'src/app/note-detail/note';
 import { compare } from '../components/common-functions';
 
 interface ISearchResult {
   notes: INoteWithRef[];
   total: number;
-}
-interface IState {
-  page: number;
-  pageSize: number;
-  searchTerm: string;
-  sortColumn: SortColumn;
-  sortDirection: SortDirection;
 }
 
 @Injectable({
@@ -108,10 +101,10 @@ export class NoteService {
       );
   }
 
-  reset(pageSize?: number) {
+  reset(patch: Partial<IState>) {
     this._state = { ...this.initialState } as IState;
-    if (pageSize) {
-      this._state.pageSize = +pageSize;
+    Object.assign(this._state, patch);
+    if (patch.pageSize) {
       this._search$.next();
     } else
     this.total$.pipe(first())

@@ -15,6 +15,6 @@ export class NoteCardsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.noteService.reset();
+    this.noteService.reset({ sortColumn: 'priority', sortDirection: 'desc'});
   }
 }

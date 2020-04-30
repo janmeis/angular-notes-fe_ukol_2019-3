@@ -27,3 +27,11 @@ export interface ISortEvent {
   column: SortColumn;
   direction: SortDirection;
 }
+
+export interface IState {
+  page: number;
+  pageSize: number;
+  searchTerm: string;
+  sortColumn: SortColumn;
+  sortDirection: SortDirection;
+}

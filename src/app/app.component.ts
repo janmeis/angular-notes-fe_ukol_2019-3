@@ -13,7 +13,6 @@ import { TranslationService } from './services/translation.service';
   providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
 })
 export class AppComponent {
-  title = 'angular-notes';
   user$: Observable<firebase.User>;
   collapsed = false;
 
